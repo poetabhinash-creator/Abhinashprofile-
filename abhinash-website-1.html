@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="google-site-verification" content="5jIhX3ok9bs44f2vBYF_lcTKSWSTQRx4xfPZOZB24vg" />
+<title>Abhinash – Poet & CA Student</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#1a1410;--paper:#f7f3ed;--saffron:#e8650a;--rose:#c94070;
+  --gold:#c8973a;--muted:#7a6f65;--light:#ede8e0;
+}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;}
+
+/* ── VIEWS ── */
+.view{display:none;}
+.view.active{display:block;}
+
+/* ── NAV ── */
+.pub-nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;
+  background:rgba(247,243,237,0.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(200,151,58,0.18);
+}
+.pub-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--ink);}
+.pub-admin-btn{
+  background:none;border:1.5px solid var(--gold);color:var(--gold);
+  padding:7px 18px;border-radius:4px;font-size:0.78rem;
+  letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;
+}
+.pub-admin-btn:hover{background:var(--gold);color:#fff;}
+
+/* ── HERO ── */
+.hero{padding:110px 48px 80px;max-width:960px;}
+.eyebrow{display:block;font-size:0.78rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:16px;}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:1;margin-bottom:10px;}
+.hero-name em{font-style:italic;color:var(--rose);}
+.hero-hindi{font-family:'Noto Sans Devanagari',sans-serif;font-size:1.3rem;color:var(--muted);margin-bottom:6px;}
+.hero-en{font-size:0.9rem;color:var(--muted);margin-bottom:32px;}
+.hero-desc{max-width:520px;font-size:1.05rem;line-height:1.8;opacity:.85;margin-bottom:40px;}
+.btn-saffron{
+  display:inline-block;background:var(--saffron);color:#fff;
+  padding:13px 30px;border-radius:4px;font-size:0.85rem;
+  letter-spacing:0.05em;text-transform:uppercase;border:none;
+  cursor:pointer;transition:background .2s;text-decoration:none;
+}
+.btn-saffron:hover{background:#c5530a;}
+
+/* ── SECTIONS ── */
+.section{padding:80px 48px;}
+.section-alt{background:var(--light);}
+.section-dark{background:var(--ink);color:var(--paper);}
+.sec-label{font-size:0.72rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.sec-label-rose{color:var(--rose);}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:40px;max-width:560px;line-height:1.25;}
+
+/* ── POEMS ── */
+.poem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;max-width:1100px;}
+.poem-card{
+  background:var(--light);border-radius:8px;padding:28px;
+  position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;
+}
+.poem-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.09);}
+.poem-card::before{
+  content:'"';font-family:'Playfair Display',serif;font-size:8rem;
+  color:var(--rose);opacity:.07;position:absolute;top:-20px;left:12px;line-height:1;
+}
+.poem-tag{
+  display:inline-block;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:#fff;padding:3px 10px;border-radius:20px;margin-bottom:12px;
+}
+.poem-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:10px;}
+.poem-excerpt{font-family:'Noto Sans Devanagari',sans-serif;font-size:0.9rem;color:var(--muted);line-height:2;white-space:pre-line;}
+
+/* ── CAUSE ── */
+.cause-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;}
+.cause-desc{color:rgba(247,243,237,.72);line-height:1.85;margin-bottom:28px;}
+.cause-quote{border-left:3px solid var(--rose);padding:24px 28px;background:rgba(255,255,255,.04);border-radius:0 8px 8px 0;}
+.cause-quote blockquote{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;color:var(--paper);line-height:1.6;margin-bottom:12px;}
+.cause-quote cite{font-size:0.8rem;color:var(--rose);letter-spacing:0.08em;}
+.cause-quote blockquote.small{font-size:1rem;}
+
+/* ── CONTACT ── */
+.contact-inner{max-width:560px;margin:0 auto;text-align:center;}
+.contact-inner .sec-title{margin:0 auto 14px;}
+.contact-sub{color:var(--muted);margin-bottom:36px;}
+.contact-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.contact-link{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:11px 22px;background:var(--paper);
+  border:1.5px solid rgba(200,151,58,.3);border-radius:6px;
+  text-decoration:none;color:var(--ink);font-size:0.87rem;font-weight:500;
+  transition:all .2s;
+}
+.contact-link:hover{border-color:var(--saffron);color:var(--saffron);transform:translateY(-2px);}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(247,243,237,.4);text-align:center;padding:28px;font-size:0.8rem;letter-spacing:0.06em;}
+footer span{color:var(--rose);}
+
+/* ── LOGIN ── */
+.login-wrap{min-height:100vh;background:var(--ink);display:flex;align-items:center;justify-content:center;}
+.login-box{background:var(--paper);border-radius:12px;padding:48px 40px;width:360px;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.4);}
+.login-icon{font-size:36px;margin-bottom:8px;}
+.login-title{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:6px;}
+.login-sub{color:var(--muted);font-size:0.85rem;margin-bottom:28px;}
+.login-input{
+  width:100%;padding:12px 16px;border:1.5px solid var(--gold);
+  border-radius:6px;font-size:1rem;background:#fff;outline:none;
+  margin-bottom:20px;transition:border .2s;font-family:'DM Sans',sans-serif;
+}
+.login-input.err{border-color:var(--rose);}
+.login-err{color:var(--rose);font-size:0.82rem;margin-bottom:14px;margin-top:-14px;}
+.login-btn{
+  width:100%;background:var(--saffron);color:#fff;border:none;
+  padding:13px;border-radius:6px;font-size:0.95rem;font-weight:500;
+  cursor:pointer;transition:background .2s;font-family:'DM Sans',sans-serif;
+}
+.login-btn:hover{background:#c5530a;}
+.login-hint{margin-top:14px;font-size:0.75rem;color:var(--gold);}
+.login-back{
+  display:inline-block;margin-top:14px;font-size:0.8rem;color:var(--muted);
+  cursor:pointer;text-decoration:underline;background:none;border:none;
+}
+
+/* ── ADMIN ── */
+.admin-wrap{min-height:100vh;background:#f0ece4;font-family:'DM Sans',sans-serif;}
+.admin-header{
+  background:var(--ink);color:var(--paper);
+  padding:16px 32px;display:flex;align-items:center;justify-content:space-between;
+}
+.admin-header-title{font-family:'Playfair Display',serif;font-size:1.2rem;}
+.admin-header-btns{display:flex;gap:10px;}
+.ah-btn{
+  padding:8px 16px;border-radius:4px;border:1.5px solid rgba(247,243,237,.25);
+  background:transparent;color:var(--paper);cursor:pointer;font-size:0.8rem;
+  letter-spacing:0.06em;text-transform:uppercase;transition:all .2s;
+}
+.ah-btn.save{background:var(--saffron);border:none;}
+.ah-btn:hover{background:rgba(255,255,255,.1);}
+.ah-btn.save:hover{background:#c5530a;}
+.admin-tabs{display:flex;border-bottom:1px solid rgba(0,0,0,.1);background:#fff;padding:0 32px;}
+.admin-tab{
+  padding:14px 22px;border:none;background:none;cursor:pointer;
+  font-size:0.88rem;font-weight:500;color:var(--muted);
+  border-bottom:2px solid transparent;transition:all .15s;
+}
+.admin-tab.active{color:var(--saffron);border-bottom-color:var(--saffron);}
+.admin-body{padding:28px 32px;max-width:860px;margin:0 auto;}
+.admin-card{background:#fff;border-radius:10px;padding:28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.admin-card-title{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:20px;color:var(--ink);}
+.field-label{display:block;font-size:0.75rem;font-weight:500;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;}
+.field-input{
+  width:100%;padding:10px 14px;border:1.5px solid #e0d8cc;border-radius:6px;
+  font-size:0.95rem;margin-bottom:16px;outline:none;font-family:'DM Sans',sans-serif;
+  transition:border .2s;background:#fff;
+}
+.field-input:focus{border-color:var(--gold);}
+.field-textarea{
+  width:100%;padding:10px 14px;border:1.5px solid #e0d8cc;border-radius:6px;
+  font-size:0.9rem;font-family:'Noto Sans Devanagari','DM Sans',sans-serif;
+  line-height:1.8;resize:vertical;outline:none;margin-bottom:16px;background:#fff;
+}
+.field-textarea:focus{border-color:var(--gold);}
+.field-row{display:flex;gap:16px;}
+.field-row>div{flex:1;}
+.poem-item{background:#f7f3ed;border-radius:8px;padding:20px;margin-bottom:14px;}
+.poem-item-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+.poem-item-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink);}
+.poem-item-btns{display:flex;gap:8px;}
+.sm-btn{
+  padding:6px 14px;border-radius:4px;border:none;color:#fff;
+  cursor:pointer;font-size:0.78rem;font-weight:500;font-family:'DM Sans',sans-serif;
+}
+.poem-excerpt-preview{font-family:'Noto Sans Devanagari',sans-serif;font-size:0.88rem;color:var(--muted);line-height:1.9;white-space:pre-line;}
+.poem-edit-form{margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,.07);}
+.color-row{display:flex;gap:8px;margin-bottom:16px;align-items:center;}
+.color-picker{width:44px;height:38px;border:1.5px solid #e0d8cc;border-radius:6px;cursor:pointer;padding:2px;}
+.add-poem-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.save-all-btn{
+  width:100%;background:var(--saffron);color:#fff;border:none;
+  padding:14px;border-radius:8px;font-size:1rem;font-weight:500;
+  cursor:pointer;margin-top:8px;font-family:'DM Sans',sans-serif;
+  transition:background .2s;
+}
+.save-all-btn:hover{background:#c5530a;}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:28px;right:28px;z-index:9999;
+  background:var(--ink);color:var(--paper);
+  padding:12px 22px;border-radius:8px;font-size:14px;
+  box-shadow:0 4px 24px rgba(0,0,0,.22);
+  animation:fadeUp .3s ease;pointer-events:none;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .pub-nav{padding:14px 20px;}
+  .hero{padding:90px 20px 60px;}
+  .section{padding:60px 20px;}
+  .cause-grid{grid-template-columns:1fr;gap:40px;}
+  .admin-body{padding:20px 16px;}
+  .admin-header{padding:14px 20px;flex-wrap:wrap;gap:10px;}
+  .admin-header-btns{flex-wrap:wrap;}
+  .field-row{flex-direction:column;gap:0;}
+  .login-box{width:90%;padding:36px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ PUBLIC SITE ═══════════════════════════ -->
+<div id="view-site" class="view active">
+  <nav class="pub-nav">
+    <span class="pub-logo" id="nav-name">Abhinash</span>
+    <button class="pub-admin-btn" onclick="showLogin()">⚙ Admin</button>
+  </nav>
+
+  <div class="hero">
+    <span class="eyebrow">CA Student · Poet · Voice for Change</span>
+    <h1 class="hero-name" id="hero-name-el">Abhi<em>nash</em></h1>
+    <p class="hero-hindi" id="hero-tagline"></p>
+    <p class="hero-en" id="hero-tagline-en"></p>
+    <p class="hero-desc" id="hero-desc"></p>
+    <a href="#poetry" class="btn-saffron">Read My Poetry</a>
+  </div>
+
+  <div class="section section-alt" id="poetry">
+    <p class="sec-label">Selected Works</p>
+    <h2 class="sec-title">Poetry that refuses to stay quiet.</h2>
+    <div class="poem-grid" id="poem-grid"></div>
+  </div>
+
+  <div class="section section-dark" id="cause">
+    <div class="cause-grid">
+      <div>
+        <p class="sec-label sec-label-rose">My Cause</p>
+        <h2 class="sec-title" style="color:var(--paper)">Women's Empowerment is not a choice. It's a duty.</h2>
+        <p class="cause-desc" id="cause-desc"></p>
+      </div>
+      <div class="cause-quote">
+        <blockquote id="cause-quote-hi"></blockquote>
+        <cite id="cause-cite"></cite>
+        <br/><br/>
+        <blockquote class="small" id="cause-quote-en"></blockquote>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="contact">
+    <div class="contact-inner">
+      <p class="sec-label">Get in Touch</p>
+      <h2 class="sec-title">Let's talk poetry, purpose, or numbers.</h2>
+      <p class="contact-sub">Whether you want to collaborate, discuss women's empowerment, or just say hello — I'm here.</p>
+      <div class="contact-links">
+        <a id="link-email" href="#" class="contact-link">✉️ Email Me</a>
+        <a id="link-instagram" href="#" class="contact-link">📸 Instagram</a>
+        <a id="link-linkedin" href="#" class="contact-link">🔗 LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <footer><p id="footer-text">© 2026 Abhinash · Made with <span>♥</span> and a lot of chai</p></footer>
+</div>
+
+<!-- ═══════════════════════════ LOGIN ═══════════════════════════ -->
+<div id="view-login" class="view">
+  <div class="login-wrap">
+    <div class="login-box">
+      <div class="login-icon">🔐</div>
+      <h2 class="login-title">Admin Login</h2>
+      <p class="login-sub">Enter your password to edit the site</p>
+      <input class="login-input" type="password" id="pw-input" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <p class="login-err" id="login-err" style="display:none">Wrong password. Try again.</p>
+      <button class="login-btn" onclick="doLogin()">Enter Dashboard</button>
+      <p class="login-hint">Default: admin123</p>
+      <button class="login-back" onclick="showSite()">← Back to site</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ ADMIN ═══════════════════════════ -->
+<div id="view-admin" class="view">
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <span class="admin-header-title">⚙️ Admin Dashboard</span>
+      <div class="admin-header-btns">
+        <button class="ah-btn" onclick="showSite()">← View Site</button>
+        <button class="ah-btn save" onclick="saveAll()">💾 Save Changes</button>
+        <button class="ah-btn" onclick="doLogout()">Logout</button>
+      </div>
+    </div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab('bio',this)">👤 Bio & Links</button>
+      <button class="admin-tab" onclick="switchTab('poems',this)">✍️ Poems</button>
+      <button class="admin-tab" onclick="switchTab('cause',this)">♀️ Cause</button>
+    </div>
+    <div class="admin-body">
+
+      <!-- BIO TAB -->
+      <div id="tab-bio">
+        <div class="admin-card">
+          <p class="admin-card-title">Personal Info</p>
+          <label class="field-label">Your Name</label>
+          <input class="field-input" id="a-name" type="text"/>
+          <label class="field-label">Hindi Tagline</label>
+          <input class="field-input" id="a-tagline" type="text" style="font-family:'Noto Sans Devanagari',sans-serif"/>
+          <label class="field-label">English Tagline</label>
+          <input class="field-input" id="a-tagline-en" type="text"/>
+          <label class="field-label">About Paragraph</label>
+          <textarea class="field-textarea" id="a-desc" rows="4"></textarea>
+        </div>
+        <div class="admin-card">
+          <p class="admin-card-title">Contact Links</p>
+          <label class="field-label">Email Address</label>
+          <input class="field-input" id="a-email" type="text"/>
+          <label class="field-label">Instagram URL</label>
+          <input class="field-input" id="a-instagram" type="text"/>
+          <label class="field-label">LinkedIn URL</label>
+          <input class="field-input" id="a-linkedin" type="text"/>
+        </div>
+      </div>
+
+      <!-- POEMS TAB -->
+      <div id="tab-poems" style="display:none">
+        <div class="add-poem-row">
+          <p style="font-family:'Playfair Display',serif;font-size:1.1rem" id="poem-count-label">Your Poems</p>
+          <button class="sm-btn" style="background:var(--saffron);padding:8px 18px;font-size:0.85rem" onclick="addPoem()">+ Add Poem</button>
+        </div>
+        <div id="poems-list"></div>
+      </div>
+
+      <!-- CAUSE TAB -->
+      <div id="tab-cause" style="display:none">
+        <div class="admin-card">
+          <p class="admin-card-title">Women's Empowerment Section</p>
+          <label class="field-label">Section Description</label>
+          <textarea class="field-textarea" id="a-cause-desc" rows="4"></textarea>
+          <label class="field-label">Quote (Hindi)</label>
+          <textarea class="field-textarea" id="a-cause-quote" rows="3" style="font-family:'Noto Sans Devanagari',sans-serif"></textarea>
+          <label class="field-label">Quote (English Translation)</label>
+          <textarea class="field-textarea" id="a-cause-quote-en" rows="3"></textarea>
+        </div>
+      </div>
+
+      <button class="save-all-btn" onclick="saveAll()">💾 Save All Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast" style="display:none"></div>
+
+<script>
+// ── DEFAULT DATA ──────────────────────────────────────────────────────────────
+const DEFAULT = {
+  bio:{
+    name:"Abhinash",
+    tagline:"शब्दों में सच, संख्याओं में न्याय",
+    taglineEn:"Truth in words, justice in numbers.",
+    description:"I balance ledgers and write poetry — two disciplines that share one purpose: to bring clarity to a complicated world. I believe in women's empowerment, honest governance, and the power of words to move people.",
+    email:"abhinash@email.com",
+    instagram:"#",
+    linkedin:"#"
+  },
+  poems:[
+    {id:1,tag:"Nari Shakti",tagColor:"#e8650a",title:"वो चुप नहीं रहेंगी",excerpt:"लक्ष्मीबाई की तलवार से उठी,\nनिर्भया की चीख में जागी,\nअब हर औरत की आवाज़ में\nएक क्रांति है जागती।"},
+    {id:2,tag:"Introspection",tagColor:"#c94070",title:"चाँद और मन",excerpt:"चाँद नहीं — यह मन है मेरा,\nजो हर रात उगता है,\nअँधेरे से नहीं डरता,\nखुद ही रोशनी बनता है।"},
+    {id:3,tag:"Social Critique",tagColor:"#c8973a",title:"पिंजरे में आज़ादी",excerpt:"जो पिंजरे को घर समझ बैठे,\nउनकी ज़ंजीरें सोने की हैं,\nपर ज़ंजीर तो ज़ंजीर है —\nसोने की हो या लोहे की।"}
+  ],
+  cause:{
+    quote:"जब तक एक भी औरत डर में जीती है, यह समाज अधूरा है।",
+    quoteEn:"As long as even one woman lives in fear, this society is incomplete.",
+    description:"In every poem I write, in every law I study, I ask one question: does this serve justice? For too long, women's voices have been suppressed — by tradition, by silence, by the systems we built and failed to question."
+  }
+};
+
+const PASSWORD = "admin123";
+let siteData = load();
+let openPoem = null;
+
+// ── STORAGE ───────────────────────────────────────────────────────────────────
+function load(){
+  try{ const s=localStorage.getItem("abhinash_site"); return s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT)); }
+  catch{ return JSON.parse(JSON.stringify(DEFAULT)); }
+}
+function save(d){
+  try{ localStorage.setItem("abhinash_site",JSON.stringify(d)); }catch{}
+}
+
+// ── VIEWS ─────────────────────────────────────────────────────────────────────
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function showSite(){ renderSite(); showView('site'); }
+function showLogin(){ clearLoginErr(); document.getElementById('pw-input').value=''; showView('login'); setTimeout(()=>document.getElementById('pw-input').focus(),100); }
+function showAdmin(){ populateAdmin(); showView('admin'); }
+
+// ── AUTH ──────────────────────────────────────────────────────────────────────
+function doLogin(){
+  const pw=document.getElementById('pw-input').value;
+  if(pw===PASSWORD){ clearLoginErr(); showAdmin(); }
+  else{ showLoginErr(); }
+}
+function doLogout(){ showSite(); }
+function showLoginErr(){
+  const i=document.getElementById('pw-input');
+  const e=document.getElementById('login-err');
+  i.classList.add('err'); e.style.display='block';
+  setTimeout(()=>{ i.classList.remove('err'); e.style.display='none'; },1800);
+}
+function clearLoginErr(){
+  document.getElementById('pw-input').classList.remove('err');
+  document.getElementById('login-err').style.display='none';
+}
+
+// ── RENDER PUBLIC SITE ────────────────────────────────────────────────────────
+function renderSite(){
+  const {bio,poems,cause}=siteData;
+  document.getElementById('nav-name').textContent=bio.name;
+  // hero name: last 4 chars italic
+  const hn=document.getElementById('hero-name-el');
+  hn.innerHTML=bio.name.slice(0,-4)+'<em>'+bio.name.slice(-4)+'</em>';
+  document.getElementById('hero-tagline').textContent=bio.tagline;
+  document.getElementById('hero-tagline-en').textContent=bio.taglineEn;
+  document.getElementById('hero-desc').textContent=bio.description;
+  document.getElementById('link-email').href='mailto:'+bio.email;
+  document.getElementById('link-instagram').href=bio.instagram;
+  document.getElementById('link-linkedin').href=bio.linkedin;
+  document.getElementById('cause-desc').textContent=cause.description;
+  document.getElementById('cause-quote-hi').textContent=cause.quote;
+  document.getElementById('cause-cite').textContent='— '+bio.name;
+  document.getElementById('cause-quote-en').textContent=cause.quoteEn;
+  document.getElementById('footer-text').innerHTML='© 2026 '+bio.name+' · Made with <span>♥</span> and a lot of chai';
+  // poems
+  const grid=document.getElementById('poem-grid');
+  grid.innerHTML=poems.map(p=>`
+    <div class="poem-card">
+      <span class="poem-tag" style="background:${p.tagColor}">${esc(p.tag)}</span>
+      <h3 class="poem-title">${esc(p.title)}</h3>
+      <p class="poem-excerpt">${esc(p.excerpt)}</p>
+    </div>`).join('');
+}
+
+// ── ADMIN: POPULATE FIELDS ────────────────────────────────────────────────────
+function populateAdmin(){
+  const {bio,cause}=siteData;
+  document.getElementById('a-name').value=bio.name;
+  document.getElementById('a-tagline').value=bio.tagline;
+  document.getElementById('a-tagline-en').value=bio.taglineEn;
+  document.getElementById('a-desc').value=bio.description;
+  document.getElementById('a-email').value=bio.email;
+  document.getElementById('a-instagram').value=bio.instagram;
+  document.getElementById('a-linkedin').value=bio.linkedin;
+  document.getElementById('a-cause-desc').value=cause.description;
+  document.getElementById('a-cause-quote').value=cause.quote;
+  document.getElementById('a-cause-quote-en').value=cause.quoteEn;
+  renderPoemsList();
+}
+
+// ── POEMS LIST ────────────────────────────────────────────────────────────────
+function renderPoemsList(){
+  const list=document.getElementById('poems-list');
+  const poems=siteData.poems;
+  document.getElementById('poem-count-label').textContent='Your Poems ('+poems.length+')';
+  list.innerHTML=poems.map((p,i)=>`
+    <div class="poem-item" id="poem-item-${p.id}">
+      <div class="poem-item-header">
+        <p class="poem-item-title">${esc(p.title)}</p>
+        <div class="poem-item-btns">
+          <button class="sm-btn" style="background:${openPoem===p.id?'#7a6f65':'#1a1410'}" onclick="togglePoem(${p.id})">
+            ${openPoem===p.id?'Collapse':'Edit'}
+          </button>
+          <button class="sm-btn" style="background:#c94070" onclick="deletePoem(${p.id})">Delete</button>
+        </div>
+      </div>
+      ${openPoem===p.id?`
+      <div class="poem-edit-form">
+        <div class="field-row">
+          <div>
+            <label class="field-label">Category Tag</label>
+            <input class="field-input" value="${esc(p.tag)}" oninput="updatePoem(${p.id},'tag',this.value)"/>
+          </div>
+          <div>
+            <label class="field-label">Tag Color</label>
+            <div class="color-row">
+              <input type="color" class="color-picker" value="${p.tagColor}" oninput="updatePoem(${p.id},'tagColor',this.value);document.getElementById('color-hex-${p.id}').value=this.value"/>
+              <input class="field-input" id="color-hex-${p.id}" style="margin-bottom:0;flex:1" value="${p.tagColor}" oninput="updatePoem(${p.id},'tagColor',this.value)"/>
+            </div>
+          </div>
+        </div>
+        <label class="field-label">Poem Title (Hindi)</label>
+        <input class="field-input" style="font-family:'Noto Sans Devanagari',sans-serif" value="${esc(p.title)}" oninput="updatePoem(${p.id},'title',this.value)"/>
+        <label class="field-label">Poem Excerpt (Hindi — use new lines)</label>
+        <textarea class="field-textarea" rows="5" oninput="updatePoem(${p.id},'excerpt',this.value)">${esc(p.excerpt)}</textarea>
+      </div>`:`
+      <p class="poem-excerpt-preview">${esc(p.excerpt)}</p>`}
+    </div>`).join('');
+}
+
+function togglePoem(id){ openPoem=(openPoem===id?null:id); renderPoemsList(); }
+function deletePoem(id){ siteData.poems=siteData.poems.filter(p=>p.id!==id); if(openPoem===id)openPoem=null; renderPoemsList(); }
+function updatePoem(id,field,val){ siteData.poems=siteData.poems.map(p=>p.id===id?{...p,[field]:val}:p); }
+function addPoem(){
+  const np={id:Date.now(),tag:"New",tagColor:"#e8650a",title:"नई कविता",excerpt:"यहाँ लिखें..."};
+  siteData.poems.push(np); openPoem=np.id; renderPoemsList();
+  document.getElementById('poem-item-'+np.id).scrollIntoView({behavior:'smooth'});
+}
+
+// ── SAVE ──────────────────────────────────────────────────────────────────────
+function saveAll(){
+  siteData.bio={
+    name:document.getElementById('a-name').value,
+    tagline:document.getElementById('a-tagline').value,
+    taglineEn:document.getElementById('a-tagline-en').value,
+    description:document.getElementById('a-desc').value,
+    email:document.getElementById('a-email').value,
+    instagram:document.getElementById('a-instagram').value,
+    linkedin:document.getElementById('a-linkedin').value
+  };
+  siteData.cause={
+    description:document.getElementById('a-cause-desc').value,
+    quote:document.getElementById('a-cause-quote').value,
+    quoteEn:document.getElementById('a-cause-quote-en').value
+  };
+  save(siteData);
+  showToast('✅ Changes saved!');
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function switchTab(name,btn){
+  ['bio','poems','cause'].forEach(t=>{
+    document.getElementById('tab-'+t).style.display=(t===name?'block':'none');
+  });
+  document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.style.display='block';
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.style.display='none',2200);
+}
+
+// ── UTIL ──────────────────────────────────────────────────────────────────────
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+renderSite();
+</script>
+</body>
+</html>
